@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dotfile Generator</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Genera tus Dotfiles</h1>
+  
+  <!-- Contenedor de Pestañas -->
+  <div class="tabs">
+    <button class="tab-button active" data-tab="editors">Editores</button>
+    <button class="tab-button" data-tab="shells">Shells</button>
+    <button class="tab-button" data-tab="download">Descargar</button>
+  </div>
+  
+  <form action="/generate" method="POST">
+    
+
+    
+    <%- include('editors.ejs') %>
+
+
+    <%- include('shells.ejs') %>
+
+
+    <!-- Sección de Descarga -->
+    <div class="tab-content" id="download">
+      <h2>Descargar Dotfiles</h2>
+      <p>Después de configurar tus editores y shells, haz clic en el botón para generar y descargar tus dotfiles personalizados.</p>
+      <button type="submit">Generar y Descargar Dotfiles</button>
+    </div>
+
+  </form>
+
+  <!-- JavaScript para Manejar las Pestañas y Mostrar/Ocultar Configuraciones Específicas -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+      const editorSelect = document.getElementById('editor');
+      const shellSelect = document.getElementById('shell');
+      const editorSpecificSections = document.querySelectorAll('.editor-specific');
+      const shellSpecificSections = document.querySelectorAll('.shell-specific');
+
+      // Función para cambiar de pestaña
+      const switchTab = (tabName) => {
+        tabButtons.forEach(button => {
+          if (button.getAttribute('data-tab') === tabName) {
+            button.classList.add('active');
+          } else {
+            button.classList.remove('active');
+          }
+        });
+
+        tabContents.forEach(content => {
+          if (content.id === tabName) {
+            content.classList.add('active');
+          } else {
+            content.classList.remove('active');
+          }
+        });
+      };
+
+      // Añadir evento a los botones de pestañas
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          switchTab(button.getAttribute('data-tab'));
+        });
+      });
+
+      // Función para mostrar configuraciones específicas de editor
+      const toggleEditorSpecific = () => {
+        const selectedEditor = editorSelect.value;
+        editorSpecificSections.forEach(section => {
+          if (section.id.startsWith(selectedEditor)) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      };
+
+      // Función para mostrar configuraciones específicas de shell
+      const toggleShellSpecific = () => {
+        const selectedShell = shellSelect.value;
+        shellSpecificSections.forEach(section => {
+          if (section.id.startsWith(selectedShell)) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      };
+
+      // Inicialmente oculta todas las secciones específicas
+      editorSpecificSections.forEach(section => {
+        section.style.display = 'none';
+      });
+      shellSpecificSections.forEach(section => {
+        section.style.display = 'none';
+      });
+
+      // Eventos para cambios en la selección de editor y shell
+      editorSelect.addEventListener('change', toggleEditorSpecific);
+      shellSelect.addEventListener('change', toggleShellSpecific);
+    });
+  </script>
+
+  <!-- Estilos CSS Mejorados para Pestañas y Organización Visual -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .tab-button {
+      background-color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0 5px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .tab-button.active {
+      background-color: #007bff;
+      color: #fff;
+      border-bottom: 2px solid #007bff;
+    }
+
+    .tab-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .tab-content {
+      display: none;
+      background-color: #fff;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    legend {
+      font-weight: bold;
+      padding: 0 10px;
+    }
+
+    .config-section {
+      margin-bottom: 20px;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #218838;
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,77 @@
+    <!-- Sección de Shells -->
+    <div class="tab-content" id="shells">
+        <h2>Configuración del Shell</h2>
+        <div class="shell-config">
+  
+          <!-- Selección del Shell -->
+          <div class="form-group">
+            <label for="shell">Shell:</label>
+            <select name="shell" id="shell" required>
+              <option value="">--Selecciona un shell--</option>
+              <option value="bash">Bash</option>
+              <option value="zsh">Zsh</option>
+              <option value="fish">Fish</option>
+              <option value="csh">Csh</option>
+              <option value="tcsh">Tcsh</option>
+            </select>
+          </div>
+  
+          <!-- Configuraciones Generales del Shell -->
+          <fieldset id="shell-general-config" class="config-section">
+            <legend>Configuraciones Generales</legend>
+            <div class="form-group">
+              <label for="shell_aliases">Aliases (separados por comas):</label>
+              <textarea name="shell_aliases" id="shell_aliases" rows="3" placeholder="Ej: ll='ls -la', gs='git status', ..."></textarea>
+            </div>
+  
+            <div class="form-group">
+              <label for="shell_functions">Funciones (separadas por comas):</label>
+              <textarea name="shell_functions" id="shell_functions" rows="3" placeholder="Ej: myfunc, anotherfunc, ..."></textarea>
+            </div>
+          </fieldset>
+  
+          <!-- Configuraciones Específicas por Shell -->
+          <fieldset id="bash-config" class="config-section shell-specific">
+            <legend>Configuraciones de Bash</legend>
+            <div class="form-group">
+              <label for="bash_prompt">Prompt Personalizado:</label>
+              <input type="text" name="bash_prompt" id="bash_prompt" placeholder="Ej: \u@\h:\w\$ ">
+            </div>
+  
+            <div class="form-group">
+              <label for="bash_completion">Completions:</label>
+              <textarea name="bash_completion" id="bash_completion" rows="3" placeholder="Ej: kubectl, docker, ..."></textarea>
+            </div>
+          </fieldset>
+  
+          <fieldset id="zsh-config" class="config-section shell-specific">
+            <legend>Configuraciones de Zsh</legend>
+            <div class="form-group">
+              <label for="zsh_theme">Tema:</label>
+              <input type="text" name="zsh_theme" id="zsh_theme" placeholder="Ej: agnoster, powerlevel10k, ...">
+            </div>
+  
+            <div class="form-group">
+              <label for="zsh_plugins">Plugins (separados por comas):</label>
+              <textarea name="zsh_plugins" id="zsh_plugins" rows="3" placeholder="Ej: git, zsh-syntax-highlighting, ..."></textarea>
+            </div>
+          </fieldset>
+  
+          <fieldset id="fish-config" class="config-section shell-specific">
+            <legend>Configuraciones de Fish</legend>
+            <div class="form-group">
+              <label for="fish_prompt">Prompt Personalizado:</label>
+              <input type="text" name="fish_prompt" id="fish_prompt" placeholder="Ej: fish_prompt">
+            </div>
+  
+            <div class="form-group">
+              <label for="fish_functions">Funciones (separadas por comas):</label>
+              <textarea name="fish_functions" id="fish_functions" rows="3" placeholder="Ej: func1, func2, ..."></textarea>
+            </div>
+          </fieldset>
+  
+          <!-- Agrega más configuraciones específicas según sea necesario -->
+  
+        </div>
+      </div>
+  

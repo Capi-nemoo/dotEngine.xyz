@@ -1,0 +1,22 @@
+" .vimrc generado automáticamente
+
+" Configuración básica
+set number
+syntax on
+set tabstop={{vim_tabstop}}
+set shiftwidth={{vim_shiftwidth}}
+set expandtab
+set fontsize={{font_size}}
+
+" Tema
+colorscheme {{theme}}
+
+" Plugins
+{{#if vim_plugins}}
+" Lista de Plugins
+call plug#begin('~/.vim/plugged')
+{{#each (split vim_plugins ",")}}
+Plug '{{this}}'
+{{/each}}
+call plug#end()
+{{/if}}

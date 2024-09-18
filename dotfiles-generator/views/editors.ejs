@@ -1,0 +1,237 @@
+<!-- Sección de Editores -->
+<div class="tab-content active" id="editors">
+    <h2>Configuración del editor</h2>
+    <div class="editor-config">
+
+        <!-- Selección de Neovim -->
+        <div class="form-group">
+            <label for="editor">Editor:</label>
+            <select name="editor" id="editor" required>
+                <option value="">--Selecciona un editor--</option>
+                <option value="nvim">Neovim</option>
+                <option value="nvim">Emacs</option>
+
+            </select>
+        </div>
+
+        <!-- Configuraciones Generales -->
+        <fieldset id="general-config" class="config-section">
+            <legend>Configuraciones Generales</legend>
+            <div class="form-group">
+                <label for="theme">Tema de Colores:</label>
+                <select name="theme" id="theme">
+                    <option value="">--Selecciona un tema--</option>
+                    <option value="gruvbox">Gruvbox</option>
+                    <option value="onedark">One Dark</option>
+                    <option value="solarized">Solarized</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="nord">Nord</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="font_size">Tamaño de Fuente:</label>
+                <input type="number" name="font_size" id="font_size" min="8" max="24" value="12">
+            </div>
+
+            <div class="form-group">
+                <label for="line_numbers">Mostrar Números de Línea:</label>
+                <select name="line_numbers" id="line_numbers">
+                    <option value="relative">Números Relativos</option>
+                    <option value="absolute">Números Absolutos</option>
+                    <option value="none">Sin Números</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="auto_save">Guardar Automáticamente:</label>
+                <select name="auto_save" id="auto_save">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Plugins -->
+        <fieldset id="plugins-config" class="config-section">
+            <legend>Configuraciones de Plugins</legend>
+            <div class="form-group">
+                <label for="plugin_manager">Gestor de Plugins:</label>
+                <select name="plugin_manager" id="plugin_manager">
+                    <option value="">--Selecciona un gestor de plugins--</option>
+                    <option value="packer">Packer</option>
+                    <option value="vim-plug">Vim-Plug</option>
+                    <option value="dein">Dein</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="plugins">Lista de Plugins (separados por comas):</label>
+                <textarea name="plugins" id="plugins" rows="3" placeholder="Ej: nvim-treesitter, lualine, telescope.nvim, ..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de LSP (Lenguaje Server Protocol) -->
+        <fieldset id="lsp-config" class="config-section">
+            <legend>Configuraciones de LSP</legend>
+            <div class="form-group">
+                <label for="enable_lsp">Habilitar LSP:</label>
+                <select name="enable_lsp" id="enable_lsp">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="lsp_servers">Servidores LSP (separados por comas):</label>
+                <textarea name="lsp_servers" id="lsp_servers" rows="3" placeholder="Ej: pyright, tsserver, gopls, ..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Keybindings -->
+        <fieldset id="keybindings-config" class="config-section">
+            <legend>Configuraciones de Keybindings</legend>
+            <div class="form-group">
+                <label for="leader_key">Tecla Leader:</label>
+                <input type="text" name="leader_key" id="leader_key" placeholder="Ej: <Space>">
+            </div>
+
+            <div class="form-group">
+                <label for="custom_mappings">Mapeos Personalizados (ej: <kbd>leader</kbd> + <kbd>w</kbd> : :w<kbd><Enter></kbd>):</label>
+                <textarea name="custom_mappings" id="custom_mappings" rows="4"
+                    placeholder="Ej: \nw :w<Enter>, \nq :q<Enter>, ..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Treesitter -->
+        <fieldset id="treesitter-config" class="config-section">
+            <legend>Configuraciones de Treesitter</legend>
+            <div class="form-group">
+                <label for="enable_treesitter">Habilitar Treesitter:</label>
+                <select name="enable_treesitter" id="enable_treesitter">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="treesitter_languages">Lenguajes para Treesitter (separados por comas):</label>
+                <textarea name="treesitter_languages" id="treesitter_languages" rows="3"
+                    placeholder="Ej: lua, python, javascript, ..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Autocompletado -->
+        <fieldset id="autocomplete-config" class="config-section">
+            <legend>Configuraciones de Autocompletado</legend>
+            <div class="form-group">
+                <label for="enable_autocomplete">Habilitar Autocompletado:</label>
+                <select name="enable_autocomplete" id="enable_autocomplete">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="autocomplete_sources">Fuentes de Autocompletado (separados por comas):</label>
+                <textarea name="autocomplete_sources" id="autocomplete_sources" rows="3"
+                    placeholder="Ej: nvim_lsp, buffer, path, ..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Snippets -->
+        <fieldset id="snippets-config" class="config-section">
+            <legend>Configuraciones de Snippets</legend>
+            <div class="form-group">
+                <label for="enable_snippets">Habilitar Snippets:</label>
+                <select name="enable_snippets" id="enable_snippets">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="snippets_sources">Fuentes de Snippets (separados por comas):</label>
+                <textarea name="snippets_sources" id="snippets_sources" rows="3"
+                    placeholder="Ej: friendly-snippets, luasnip, ..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Git Integration -->
+        <fieldset id="git-config" class="config-section">
+            <legend>Integración con Git</legend>
+            <div class="form-group">
+                <label for="enable_git_integration">Habilitar Integración con Git:</label>
+                <select name="enable_git_integration" id="enable_git_integration">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="git_plugins">Plugins de Git (separados por comas):</label>
+                <textarea name="git_plugins" id="git_plugins" rows="3"
+                    placeholder="Ej: fugitive, gitsigns, ..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Terminal Integrada -->
+        <fieldset id="terminal-config" class="config-section">
+            <legend>Terminal Integrada</legend>
+            <div class="form-group">
+                <label for="enable_terminal">Habilitar Terminal Integrada:</label>
+                <select name="enable_terminal" id="enable_terminal">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="terminal_font_size">Tamaño de Fuente de la Terminal:</label>
+                <input type="number" name="terminal_font_size" id="terminal_font_size" min="8" max="24" value="12">
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Appearance -->
+        <fieldset id="appearance-config" class="config-section">
+            <legend>Configuraciones de Apariencia</legend>
+            <div class="form-group">
+                <label for="cursor_style">Estilo del Cursor:</label>
+                <select name="cursor_style" id="cursor_style">
+                    <option value="block">Bloque</option>
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="termguicolors">Habilitar Termguicolors:</label>
+                <select name="termguicolors" id="termguicolors">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Configuraciones de Performance -->
+        <fieldset id="performance-config" class="config-section">
+            <legend>Configuraciones de Rendimiento</legend>
+            <div class="form-group">
+                <label for="lazy_loading">Habilitar Lazy Loading de Plugins:</label>
+                <select name="lazy_loading" id="lazy_loading">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="startup_time">Optimizar Tiempo de Inicio:</label>
+                <select name="startup_time" id="startup_time">
+                    <option value="basic">Básico</option>
+                    <option value="advanced">Avanzado</option>
+                </select>
+            </div>
+        </fieldset>
+
+    </div>
+</div>
